@@ -1,7 +1,11 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("org.jetbrains.kotlin.plugin.serialization")
 }
+
+val koinVersion = "3.2.0"
+val ktorVersion = "2.0.3"
 
 kotlin {
     android()
@@ -17,12 +21,22 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting
-        val commonTest by getting {
+        val commonMain by getting {
             dependencies {
-                implementation(kotlin("test"))
+                // Koin DI
+                implementation ("io.insert-koin:koin-core:$koinVersion")
+                implementation ("io.insert-koin:koin-test:$koinVersion")
+
+                // Ktor
+                implementation("io.ktor:ktor-client-core:$ktorVersion")
+                implementation("io.ktor:ktor-client-cio:$ktorVersion")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+                implementation("io.ktor:ktor-client-logging:$ktorVersion")
+                implementation("ch.qos.logback:logback-classic:1.2.3")
             }
         }
+        val commonTest by getting
         val androidMain by getting
         val androidTest by getting
         val iosX64Main by getting

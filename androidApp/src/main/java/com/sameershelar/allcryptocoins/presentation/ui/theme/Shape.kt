@@ -1,4 +1,4 @@
-package com.sameershelar.allcryptocoins.ui.theme
+package com.sameershelar.allcryptocoins.presentation.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

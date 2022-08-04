@@ -1,4 +1,4 @@
-package com.sameershelar.allcryptocoins.ui.theme
+package com.sameershelar.allcryptocoins.presentation.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
