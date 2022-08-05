@@ -15,12 +15,25 @@ import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
+import org.koin.core.KoinApplication
+import org.koin.core.context.startKoin
+import org.koin.core.module.Module
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
-val commonModule = module {
+fun initKoin(appModule: Module): KoinApplication {
+    return startKoin {
+        printLogger()
+        modules(
+            appModule,
+            commonModule,
+        )
+    }
+}
+
+private val commonModule = module {
 
     singleOf<HttpClient> {
         HttpClient(CIO) {
