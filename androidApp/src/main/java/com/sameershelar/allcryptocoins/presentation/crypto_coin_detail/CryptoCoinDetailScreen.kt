@@ -8,6 +8,7 @@ import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterVertically
@@ -15,11 +16,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.google.accompanist.flowlayout.FlowRow
+import com.sameershelar.allcryptocoins.crypto_coin_detail.CryptoCoinDetailViewModel
 import com.sameershelar.allcryptocoins.presentation.common_composables.ActiveStatus
 import com.sameershelar.allcryptocoins.presentation.common_composables.CryptoAppBar
 import com.sameershelar.allcryptocoins.presentation.crypto_coin_detail.composables.CryptoCoinTag
 import com.sameershelar.allcryptocoins.presentation.crypto_coin_detail.composables.TeamListItem
-import com.google.accompanist.flowlayout.FlowRow
 import org.koin.androidx.compose.get
 
 @Composable
@@ -31,12 +33,12 @@ fun CryptoCoinDetailScreen(
     remember {
         viewModel.setCryptoCoinId(cryptoCoinId)
     }
-    val state = viewModel.state.value
+    val state = viewModel.state.collectAsState()
 
     Box(modifier = Modifier.fillMaxSize()) {
-        if (state.error.isNotBlank()) {
+        if (state.value.error.isNotBlank()) {
             Text(
-                text = state.error,
+                text = state.value.error,
                 color = MaterialTheme.colors.error,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -45,12 +47,12 @@ fun CryptoCoinDetailScreen(
                     .align(Center)
             )
         }
-        if (state.isLoading) {
+        if (state.value.isLoading) {
             CircularProgressIndicator(modifier = Modifier.align(Center))
         }
     }
 
-    state.cryptoCoinDetail?.let { cryptoCoinDetail ->
+    state.value.cryptoCoinDetail?.let { cryptoCoinDetail ->
         CryptoAppBar(
             cryptoCoinDetail = cryptoCoinDetail,
             content = {

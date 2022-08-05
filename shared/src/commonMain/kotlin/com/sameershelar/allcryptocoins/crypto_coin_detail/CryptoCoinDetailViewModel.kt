@@ -1,20 +1,19 @@
-package com.sameershelar.allcryptocoins.presentation.crypto_coin_detail
+package com.sameershelar.allcryptocoins.crypto_coin_detail
 
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.sameershelar.allcryptocoins.BaseViewModel
 import com.sameershelar.allcryptocoins.common.Resource
 import com.sameershelar.allcryptocoins.domain.usecase.get_crypto.GetCryptoCoinDetailFromApiUseCase
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 class CryptoCoinDetailViewModel constructor(
     private val getCryptoCoinDetailFromApiUseCase: GetCryptoCoinDetailFromApiUseCase,
-) : ViewModel() {
+) : BaseViewModel() {
 
-    private val _state = mutableStateOf(CryptoCoinDetailState())
-    val state: State<CryptoCoinDetailState> = _state
+    private val _state = MutableStateFlow(CryptoCoinDetailState())
+    val state: StateFlow<CryptoCoinDetailState> = _state
 
     fun setCryptoCoinId(cryptoCoinId: String) {
         if (cryptoCoinId.isNotBlank()) {
@@ -33,6 +32,6 @@ class CryptoCoinDetailViewModel constructor(
                 is Resource.Error -> _state.value =
                     CryptoCoinDetailState(error = result.message ?: "Unknown error occurred")
             }
-        }.launchIn(viewModelScope)
+        }.launchIn(scope)
     }
 }

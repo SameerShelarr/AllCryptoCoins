@@ -1,4 +1,4 @@
-package com.sameershelar.allcryptocoins.presentation.crypto_coin_list
+package com.sameershelar.allcryptocoins.crypto_coin_list
 
 import com.sameershelar.allcryptocoins.domain.model.CryptoCoin
 

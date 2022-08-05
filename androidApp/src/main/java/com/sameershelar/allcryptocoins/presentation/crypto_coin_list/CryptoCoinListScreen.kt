@@ -10,11 +10,13 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.sameershelar.allcryptocoins.crypto_coin_list.CryptoCoinListViewModel
 import com.sameershelar.allcryptocoins.presentation.Screen
 import com.sameershelar.allcryptocoins.presentation.crypto_coin_list.composables.CryptoCoinListItem
 import org.koin.androidx.compose.get
@@ -24,10 +26,10 @@ fun CryptoCoinListScreen(
     navController: NavController,
     viewModel: CryptoCoinListViewModel = get(),
 ) {
-    val state = viewModel.state.value
+    val state = viewModel.state.collectAsState()
     Box(modifier = Modifier.fillMaxSize()) {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
-            items(state.cryptoCoins) { cryptoCoin ->
+            items(state.value.cryptoCoins) { cryptoCoin ->
                 CryptoCoinListItem(cryptoCoin = cryptoCoin, onItemClick = {
                     navController.navigate(
                         route = Screen.CryptoCoinDetailScreen.route + "/${cryptoCoin.id}"
@@ -35,9 +37,9 @@ fun CryptoCoinListScreen(
                 })
             }
         }
-        if (state.error.isNotBlank()) {
+        if (state.value.error.isNotBlank()) {
             Text(
-                text = state.error,
+                text = state.value.error,
                 color = MaterialTheme.colors.error,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -46,7 +48,7 @@ fun CryptoCoinListScreen(
                     .align(Alignment.Center),
             )
         }
-        if (state.isLoading) {
+        if (state.value.isLoading) {
             CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
         }
     }

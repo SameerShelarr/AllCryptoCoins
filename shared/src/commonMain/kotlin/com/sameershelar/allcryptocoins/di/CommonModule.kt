@@ -1,5 +1,7 @@
 package com.sameershelar.allcryptocoins.di
 
+import com.sameershelar.allcryptocoins.crypto_coin_detail.CryptoCoinDetailViewModel
+import com.sameershelar.allcryptocoins.crypto_coin_list.CryptoCoinListViewModel
 import com.sameershelar.allcryptocoins.domain.remote.ICoinPaprikaAPI
 import com.sameershelar.allcryptocoins.domain.repository.ICryptoCoinRepository
 import com.sameershelar.allcryptocoins.domain.usecase.get_crypto.GetCryptoCoinDetailFromApiUseCase
@@ -46,4 +48,8 @@ val commonModule = module {
     singleOf(::CoinPaprikaApiImpl) { bind<ICoinPaprikaAPI>() }
 
     singleOf(::CryptoCoinRepositoryImpl) { bind<ICryptoCoinRepository>() }
+
+    singleOf(::CryptoCoinListViewModel)
+
+    factoryOf(::CryptoCoinDetailViewModel)
 }
