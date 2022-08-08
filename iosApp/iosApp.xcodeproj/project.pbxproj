@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,8 @@
 		130E3861289D463B00CE178B /* CryptoCoinListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E3860289D463B00CE178B /* CryptoCoinListItemView.swift */; };
 		130E3864289D486C00CE178B /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E3863289D486C00CE178B /* PreviewProvider.swift */; };
 		130E3866289D4FD400CE178B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E3865289D4FD400CE178B /* Color.swift */; };
+		1355F21728A12BCB00C57706 /* CryptoCoinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1355F21628A12BCB00C57706 /* CryptoCoinDetailView.swift */; };
+		1355F21A28A16A6500C57706 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 1355F21928A16A6500C57706 /* WrappingHStack */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +37,7 @@
 		130E3860289D463B00CE178B /* CryptoCoinListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCoinListItemView.swift; sourceTree = "<group>"; };
 		130E3863289D486C00CE178B /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		130E3865289D4FD400CE178B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		1355F21628A12BCB00C57706 /* CryptoCoinDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCoinDetailView.swift; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1355F21A28A16A6500C57706 /* WrappingHStack in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				130E3860289D463B00CE178B /* CryptoCoinListItemView.swift */,
+				1355F21628A12BCB00C57706 /* CryptoCoinDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -149,6 +154,9 @@
 			dependencies = (
 			);
 			name = iosApp;
+			packageProductDependencies = (
+				1355F21928A16A6500C57706 /* WrappingHStack */,
+			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* iosApp.app */;
 			productType = "com.apple.product-type.application";
@@ -177,6 +185,9 @@
 				Base,
 			);
 			mainGroup = 7555FF72242A565900829871;
+			packageReferences = (
+				1355F21828A16A6400C57706 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
+			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -228,6 +239,7 @@
 				130E3861289D463B00CE178B /* CryptoCoinListItemView.swift in Sources */,
 				130E3866289D4FD400CE178B /* Color.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				1355F21728A12BCB00C57706 /* CryptoCoinDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +434,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1355F21828A16A6400C57706 /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dkk/WrappingHStack";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1355F21928A16A6500C57706 /* WrappingHStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1355F21828A16A6400C57706 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
+			productName = WrappingHStack;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7555FF73242A565900829871 /* Project object */;
 }

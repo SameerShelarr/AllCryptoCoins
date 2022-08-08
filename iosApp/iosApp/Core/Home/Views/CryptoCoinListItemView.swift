@@ -51,9 +51,9 @@ struct CryptoCoinListItemView: View {
                     .border(Color.green, width: 1)
             } else {
                 Text("InActive")
-                    .foregroundColor(Color.green)
+                    .foregroundColor(Color.red)
                     .padding(4)
-                    .border(Color.green, width: 1)
+                    .border(Color.red, width: 1)
             }
         }
         .padding(EdgeInsets(top: 40, leading: 40, bottom: 40, trailing: 20))
@@ -64,9 +64,11 @@ struct CryptoCoinListItemView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             CryptoCoinListItemView(coin: dev.coin)
+                .previewDevice("iPhone 11")
                 .previewLayout(.sizeThatFits)
             
             CryptoCoinListItemView(coin: dev.coin)
+                .previewDevice("iPhone 11")
                 .previewLayout(.sizeThatFits)
                 .preferredColorScheme(.dark)
         }

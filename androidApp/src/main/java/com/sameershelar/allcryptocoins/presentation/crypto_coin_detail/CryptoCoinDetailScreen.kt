@@ -13,6 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -70,7 +71,8 @@ fun CryptoCoinDetailScreen(
                                 style = MaterialTheme.typography.h2,
                                 modifier = Modifier
                                     .weight(8f)
-                                    .align(CenterVertically)
+                                    .align(CenterVertically),
+                                fontWeight = FontWeight.Bold
                             )
                             ActiveStatus(
                                 isActive = cryptoCoinDetail.isActive,
